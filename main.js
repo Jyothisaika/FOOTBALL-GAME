@@ -28,18 +28,17 @@ function new_image()
 
 window.addEventListener("keydown", my_keydown);
 
-function my_keydown(e)
-{
+function my_keydown(e){
 	keyPressed = e.keyCode;
 	console.log(keyPressed);
 	if((ball_x==350)&&(ball_y<=50)){
 		canvas.remove(ball_obj);
 		console.log("You have Hit the Goal!!!");
 		document.getElementById("hd3").innerHTML="You have Hit the Goal!!!";
-	    document.getElementById("myCanvas").style.borderColor="red";
-	}
-	else{
-		if(keyPressed == '38')
+	    document.getElementById("myCanvas").style.borderColor="red";}
+	
+	else
+		{if(keyPressed == '38')
 		{
 			up();
 			console.log("up");
@@ -60,7 +59,7 @@ function my_keydown(e)
 			console.log("right");
 		}
 	}
-	
+}
 	function up()
 	{
 		if(ball_y >=5)
@@ -76,7 +75,15 @@ function my_keydown(e)
     //Complete the code for the "down()" function
 	function down()
 	{
-		
+		if(ball_y <650)
+		{
+			
+			ball_y = ball_y + block_image_height;
+			console.log("block image height = " + block_image_height);
+			console.log("When down arrow key is pressed, X =  " + ball_x + " , Y = "+ball_y);
+			canvas.remove(ball_obj);
+			new_image();
+		}
 
 
 
@@ -101,6 +108,13 @@ function my_keydown(e)
     //Complete the code for the "right()" function
 	function right()
 	{
+		if(ball_x <400)
+		{
+			ball_x = ball_x + block_image_width;
+			console.log("block image width = " + block_image_width);
+			console.log("When right arrow key is pressed, X =  " + ball_x + " , Y = "+ball_y);
+			canvas.remove(ball_obj);
+			new_image();
 		
 
 
